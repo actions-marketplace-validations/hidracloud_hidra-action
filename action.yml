@@ -5,11 +5,15 @@ inputs:
   hidra-files:
     description: "Hidra files to run"
     required: true
+  hidra-version:
+    description: "Hidra version to use"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
   steps:
     - shell: bash
-      run: sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/hidracloud/hidra/main/install.sh)"
+      run: sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/hidracloud/hidra/main/install.sh) ${{ inputs.hidra-version }}"
     - shell: bash
-      run: hidra test ${{ inputs.hidra-files }}
+      run: hidra test --exit-on-error ${{ inputs.hidra-files }}
