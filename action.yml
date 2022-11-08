@@ -1,0 +1,8 @@
+name: "Hidra Test"
+description: "Run your Hidra tests directly from GitHub Actions"
+author: "JoseCarlosGarcia95"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/hidracloud/hidra/main/install.sh)"
